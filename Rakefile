@@ -20,7 +20,8 @@ namespace :frog do
       blog = Blog.create!(:title => 'My Frog Blog')
       blog.entries.create(
         :title => 'Welcome to Frog!',
-        :text => '!http://www1.istockphoto.com/file_thumbview_approve/1073907/2/istockphoto_1073907-frog-cartoon.jpg!'
+        :text => '!http://www1.istockphoto.com/file_thumbview_approve/1073907/2/istockphoto_1073907-frog-cartoon.jpg!',
+        :slug => 'welcome-to-frog'
       )
       blog.entries.create(
         :title => 'Code Sample',

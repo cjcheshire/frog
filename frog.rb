@@ -33,6 +33,12 @@ get '/perm/:id' do
   erb :entry
 end
 
+# Permalink Slug Entry action
+get '/slug/:slug' do
+  @entry = @blog.entries.find_by_slug(params[:slug])
+  erb :entry
+end
+
 get '/login' do
   erb :login
 end
@@ -71,8 +77,17 @@ end
 
 post '/admin/update/:id' do
   entry = @blog.entries.find(params[:id])
-  entry.update_attributes(:title => params[:title], :url => params[:url], :text => params[:text])
-  redirect "/perm/#{entry.id}"
+  slug = params[:slug]
+  
+  if params[:slug].blank?
+    slug = sluggify(params[:title])
+  end
+  
+  # TODO => helper: query for exisiting slug, append url
+  
+  entry.update_attributes(:title => params[:title], :url => params[:url], :slug => slug, :text => params[:text])
+  
+  redirect "/slug/#{entry.slug}"
 end
 
 get '/admin/destroy/:id' do
@@ -84,6 +99,7 @@ post '/admin/create' do
   entry = @blog.entries.create(
     :title => params[:title],
     :url => params[:url],
+    :slug => params[:slug],
     :text => params[:text]
   )
   redirect "/perm/#{entry.id}"

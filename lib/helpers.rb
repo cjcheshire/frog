@@ -64,5 +64,21 @@ module Helpers
     return time_stamp(from_time) if (detail && distance_in_minutes > 2880)
     return time
   end
+  
+  def sluggify(title)
+    accents = {['á','à','â','ä','ã'] => 'a'} # Shortened
+
+    accents.each do |ac,rep|
+      ac.each do |s|
+        title = title.gsub(s, rep)
+      end
+    end
+
+    title = title.gsub(/[^a-zA-Z0-9 ]/,"")
+    title = title.gsub(/[ ]+/," ")    
+    title = title.gsub(/ /,"-")
+    title = title.downcase
+    return title
+  end
 
 end
