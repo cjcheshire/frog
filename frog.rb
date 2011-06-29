@@ -6,7 +6,7 @@ require 'sinatra'
 Dir["lib/*.rb"].each { |x| load x }
 
 configure do
-  set_option :sessions, true
+  set :sessions, true
 end
 
 before do
