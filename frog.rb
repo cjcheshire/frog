@@ -83,7 +83,7 @@ post '/admin/update/:id' do
     slug = sluggify(params[:title])
   end
   
-  # TODO => helper: query for exisiting slug, append url
+  # TODO => helper: query for exisiting slug, append url OR add id before slug??
   
   entry.update_attributes(:title => params[:title], :url => params[:url], :slug => slug, :text => params[:text])
   
@@ -96,13 +96,20 @@ get '/admin/destroy/:id' do
 end
 
 post '/admin/create' do
+  
+  slug = params[:slug]
+  
+  if params[:slug].blank?
+    slug = sluggify(params[:title])
+  end
+  
   entry = @blog.entries.create(
     :title => params[:title],
     :url => params[:url],
-    :slug => params[:slug],
+    :slug => slug,
     :text => params[:text]
   )
-  redirect "/perm/#{entry.id}"
+  redirect "/slug/#{entry.slug}"
 end
 
 # For use by the bookmarklet
