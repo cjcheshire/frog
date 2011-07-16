@@ -7,7 +7,7 @@ module Helpers
   def partial(name, options={})
     haml("_#{name.to_s}".to_sym, options.merge(:layout => false))
   end
-
+  
   def image_tag(file, options={})
     tag = "<img src='/images/#{file}'"
     tag += " alt='#{options[:alt]}' title='#{options[:alt]}' " if options[:alt]

@@ -7,7 +7,7 @@
   %p
     %a{:href => "/perm/#{entry.id}"}= entry.title
     %small
-      (#{time_ago_or_time_stamp(entry.created_at)})
+      (#{time_ago_or_time_stamp(entry.created_at)} [live = #{entry.is_live}])
     = link_to 'Edit', "/admin/update/#{entry.id}"
     |
     \#{link_to 'Preview Slug', "/blog/#{entry.slug}"} |

@@ -25,7 +25,8 @@ end
 
 # Main Blog action
 get '/' do
-  @entries = @blog.entries
+  #@entries = @blog.entries
+  @entries = @blog.entries.where("is_live = ?", true)
   haml :blog
 end
 
@@ -38,7 +39,7 @@ end
 # Permalink Slug Entry action
 get '/blog/:slug' do
   @entry = @blog.entries.find_by_slug(params[:slug])
-  if @entry == nil
+  if @entry == nil || !@entry.is_live && !logged_in?
     redirect '/'
   else
     haml :entry
