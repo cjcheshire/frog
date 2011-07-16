@@ -5,7 +5,7 @@ module Helpers
   end
   
   def partial(name, options={})
-    erb("_#{name.to_s}".to_sym, options.merge(:layout => false))
+    haml("_#{name.to_s}".to_sym, options.merge(:layout => false))
   end
 
   def image_tag(file, options={})

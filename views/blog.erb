@@ -1,5 +1,0 @@
-<% prev_date = '' %>
-<% @entries.each do |entry| %>
-    <%= partial(:entry, :locals => {:entry => entry, :prev_date => prev_date}) %>
-    <% prev_date = entry.created_at.strftime("%a%d%Y") %>
-<% end %>

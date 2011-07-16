@@ -14,6 +14,7 @@ class Schema < ActiveRecord::Migration
       t.string  :url, :null => false, :default => ''
       t.string  :slug, :null => false, :default => ''
       t.text    :text, :null => false, :default => ''
+      t.boolean :is_live, :null => true, :default => false
       t.timestamps
     end unless ActiveRecord::Base.connection.tables.include?('entries')
   end

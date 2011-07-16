@@ -1,0 +1,6 @@
+%h2 Edit Entry
+%form{:action => "/admin/update/#{@entry.id}", :method => "post"}
+  = partial :entry_form
+  %p
+    %input{:type => "submit", :value => "update"}/
+    %input{:onclick => "location.href='/admin'", :type => "button", :value => "cancel"}/

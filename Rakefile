@@ -21,15 +21,19 @@ namespace :frog do
       blog.entries.create(
         :title => 'Welcome to Frog!',
         :text => '!http://www1.istockphoto.com/file_thumbview_approve/1073907/2/istockphoto_1073907-frog-cartoon.jpg!',
-        :slug => 'welcome-to-frog'
+        :slug => 'welcome-to-frog',
+        :is_live => true
       )
       blog.entries.create(
         :title => 'Code Sample',
-        :text => "[code]def frog\n  puts 'Welcome to Frog'\nend[/code]"
+        :text => "[code]def frog\n  puts 'Welcome to Frog'\nend[/code]",
+        :slug => 'code-sample'
       )
       blog.entries.create(
         :title => 'moomerman\'s frog at master - GitHub',
-        :url => "http://github.com/moomerman/frog/tree/master"
+        :url => "http://github.com/moomerman/frog/tree/master",
+        :slug => 'test',
+        :is_live => true
       )
     end
   end

@@ -1,0 +1,6 @@
+%h2 New Entry
+%form{:action => "/admin/create", :method => "post"}
+  = partial :entry_form
+  %p
+    %input{:type => "submit", :value => "create"}/
+    %input{:onclick => "location.href='/'", :type => "button", :value => "cancel"}/

@@ -2,11 +2,13 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'haml'
 
 Dir["lib/*.rb"].each { |x| load x }
 
 configure do
   set :sessions, true
+  set :haml, { :format => :html5 }
 end
 
 before do
@@ -24,23 +26,27 @@ end
 # Main Blog action
 get '/' do
   @entries = @blog.entries
-  erb :blog
+  haml :blog
 end
 
 # Permalink Entry action
 get '/perm/:id' do
   @entry = @blog.entries.find(params[:id])
-  erb :entry
+  haml :entry
 end
 
 # Permalink Slug Entry action
-get '/slug/:slug' do
+get '/blog/:slug' do
   @entry = @blog.entries.find_by_slug(params[:slug])
-  erb :entry
+  if @entry == nil
+    redirect '/'
+  else
+    haml :entry
+  end
 end
 
 get '/login' do
-  erb :login
+  haml :login
 end
 
 post '/login' do
@@ -62,17 +68,17 @@ end
 
 get '/admin' do
   @entries = @blog.entries
-  erb :admin
+  haml :admin
 end
 
 get '/admin/new' do
   @entry = Entry.new
-  erb :new
+  haml :new
 end
 
 get '/admin/update/:id' do
   @entry = @blog.entries.find(params[:id])
-  erb :update
+  haml :update
 end
 
 post '/admin/update/:id' do
@@ -85,9 +91,9 @@ post '/admin/update/:id' do
   
   # TODO => helper: query for exisiting slug, append url OR add id before slug??
   
-  entry.update_attributes(:title => params[:title], :url => params[:url], :slug => slug, :text => params[:text])
+  entry.update_attributes(:title => params[:title], :url => params[:url], :slug => slug, :text => params[:text], :is_live => params[:is_live])
   
-  redirect "/slug/#{entry.slug}"
+  redirect "/blog/#{entry.slug}"
 end
 
 get '/admin/destroy/:id' do
@@ -107,9 +113,10 @@ post '/admin/create' do
     :title => params[:title],
     :url => params[:url],
     :slug => slug,
-    :text => params[:text]
+    :text => params[:text],
+    :is_live => params[:is_live]
   )
-  redirect "/slug/#{entry.slug}"
+  redirect "/blog/#{entry.slug}"
 end
 
 # For use by the bookmarklet
