@@ -4,6 +4,8 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'will_paginate'
+require 'will_paginate/finders/active_record' 
+
 
 Dir["lib/*.rb"].each { |x| load x }
 
@@ -33,8 +35,8 @@ end
 
 # Main Blog action
 get '/blog' do
-  @entries = @blog.entries.where("is_live = ?", true)
-  #@entries = @blog.entries.paginate :page => params[:page], :per_page => 3
+  #@entries = @blog.entries.where("is_live = ?", true)
+  @entries = @blog.entries.where("is_live = ?", true).paginate :page => params[:page], :per_page => 3
   haml :blog
 end
 
