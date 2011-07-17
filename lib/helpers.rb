@@ -13,6 +13,13 @@ module Helpers
     tag += " alt='#{options[:alt]}' title='#{options[:alt]}' " if options[:alt]
     tag += "/>"
   end
+  
+  def next_page_link(text)
+    page_num = (params[:page] || 1).to_i + 1
+    haml_tag :a, :class => 'show-more', :href => "#{request.path}?page=#{page_num}" do
+      haml_concat text
+    end
+  end  
 
   def link_to(text, link='#', options = {})
     tag = "<a href='#{link}'"

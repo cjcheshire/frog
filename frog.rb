@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
+require 'will_paginate'
 
 Dir["lib/*.rb"].each { |x| load x }
 
@@ -29,6 +30,15 @@ get '/' do
   @entries = @blog.entries.where("is_live = ?", true)
   haml :blog
 end
+
+# Main Blog action
+get '/blog' do
+  @entries = @blog.entries.where("is_live = ?", true)
+  #@entries = @blog.entries.paginate :page => params[:page], :per_page => 3
+  haml :blog
+end
+
+#.is_live.paginate :page => params[:page], :per_page => 3
 
 # Permalink Entry action
 get '/perm/:id' do
@@ -69,17 +79,17 @@ end
 
 get '/admin' do
   @entries = @blog.entries
-  haml :admin
+  haml :admin, :layout => :layout_admin
 end
 
 get '/admin/new' do
   @entry = Entry.new
-  haml :new
+  haml :new, :layout => :layout_admin
 end
 
 get '/admin/update/:id' do
   @entry = @blog.entries.find(params[:id])
-  haml :update
+  haml :update, :layout => :layout_admin
 end
 
 post '/admin/update/:id' do
@@ -99,7 +109,7 @@ end
 
 get '/admin/destroy/:id' do
   @blog.entries.find(params[:id]).destroy
-  redirect '/admin'
+  redirect '/admin', :layout => :layout_admin
 end
 
 post '/admin/create' do

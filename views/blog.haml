@@ -2,3 +2,6 @@
 - @entries.each do |entry|
   = partial(:entry, :locals => {:entry => entry, :prev_date => prev_date})
   - prev_date = entry.created_at.strftime("%a%d%Y")
+  
+=#- unless @entries.current_page >= @entries.total_pages
+=#  - next_page_link "Show more posts"
