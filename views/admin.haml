@@ -1,7 +1,5 @@
 %h2 Admin
-%p
-  %b Blog Title
-  = @blog.title
+
 %p= link_to('New Entry', '/admin/new')
 - @entries.each do |entry|
   %p
@@ -12,9 +10,3 @@
     |
     \#{link_to 'Preview Slug', "/blog/#{entry.slug}"} |
     \#{link_to 'Delete', "/admin/destroy/#{entry.id}", :onclick => "return confirm('Are you sure?');"}
-
-%h2 TODO
-%p Google analytics code
-%p Keywords & Description
-%p Any rhc widgets
-%p Logo?

@@ -7,7 +7,6 @@
       = @blog.title
     %link{:href => "/style.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
     %link{:href => "/tumblr.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
-    %script{:src => "/jquery-1.2.6.min.js", :type => "text/javascript"}
   %body
     %h1= link_to @blog.title, '/'
     - if logged_in?
@@ -18,9 +17,13 @@
     #content
       = yield
     #footer
-      powered by
-      %a{:href => "http://github.com/moomerman/frog/tree/master"} frog
-      and
-      %a{:href => "http://github.com/bmizerany/sinatra/tree/master"} sinatra
-      |
-      %a{:href => "http://hobix.com/textile/"} formatting
+
+  :plain
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+    <script type="text/javascript"> 
+    if (typeof jQuery == 'undefined')
+    {
+        document.write(unescape("%3Cscript src='/javascripts/jquery-1.5.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+    </script>
+  = yield_content :footer_scripts

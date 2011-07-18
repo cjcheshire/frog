@@ -1,17 +1,16 @@
-%p
-  %b Title
+.row.input-text
+  %label 
+    Title
   %input.text_input{:name => "title", :type => "text", :value => @entry.title}/
-%p
-  %b URL?
-  %input.text_input{:name => "url", :type => "text", :value => @entry.url}/
-%p
-  %b Slug
+.row.input-text
+  %label 
+    Slug
   %input.text_input{:name => "slug", :type => "text", :value => @entry.slug}/
-%p
-  %b Body
-  %a{:href => "http://hobix.com/textile/quick.html", :target => "_new"} Textile Enabled
-  for syntax use: [code]...[/code]
-  %textarea{:name => "text"}= @entry.text
-%p
-  %b Published
+.row.textarea
+  %label 
+    Body
+  %textarea{:name => "text"}
+    = @entry.text
+.row.checkbox
+  %label Published
   %input.checkbox{:checked => @entry.is_live, :name => "is_live", :type => "checkbox", :value => "true"}/

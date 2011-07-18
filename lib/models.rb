@@ -41,7 +41,7 @@ class Entry < ActiveRecord::Base
   end
   
   def short_uri
-    URI.parse(self.url).host.gsub(/www./, '') rescue self.url
+    URI.parse(self.slug).host.gsub(/www./, '') rescue self.slug
   end
   
 end

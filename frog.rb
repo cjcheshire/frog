@@ -4,7 +4,9 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'will_paginate'
-require 'will_paginate/finders/active_record' 
+require 'will_paginate/finders/active_record'
+require 'sinatra/content_for'
+require 'sinatra/ratpack'
 
 
 Dir["lib/*.rb"].each { |x| load x }
@@ -27,20 +29,16 @@ helpers do
 end
 
 # Main Blog action
-get '/' do
-  #@entries = @blog.entries
-  @entries = @blog.entries.where("is_live = ?", true)
-  haml :blog
+['/', '/blog?'].each do | path | 
+  get path do 
+    @entries = @blog.entries.where("is_live = ?", true).paginate :page => params[:page], :per_page => 3  
+    if request.xhr?
+      haml :blog, :layout => false
+    else
+      haml :blog
+    end  
+  end
 end
-
-# Main Blog action
-get '/blog' do
-  #@entries = @blog.entries.where("is_live = ?", true)
-  @entries = @blog.entries.where("is_live = ?", true).paginate :page => params[:page], :per_page => 3
-  haml :blog
-end
-
-#.is_live.paginate :page => params[:page], :per_page => 3
 
 # Permalink Entry action
 get '/perm/:id' do
@@ -51,6 +49,7 @@ end
 # Permalink Slug Entry action
 get '/blog/:slug' do
   @entry = @blog.entries.find_by_slug(params[:slug])
+  @on_slug = true
   if @entry == nil || !@entry.is_live && !logged_in?
     redirect '/'
   else
@@ -104,14 +103,14 @@ post '/admin/update/:id' do
   
   # TODO => helper: query for exisiting slug, append url OR add id before slug??
   
-  entry.update_attributes(:title => params[:title], :url => params[:url], :slug => slug, :text => params[:text], :is_live => params[:is_live])
+  entry.update_attributes(:title => params[:title], :slug => slug, :text => params[:text], :is_live => params[:is_live])
   
   redirect "/blog/#{entry.slug}"
 end
 
 get '/admin/destroy/:id' do
   @blog.entries.find(params[:id]).destroy
-  redirect '/admin', :layout => :layout_admin
+  redirect '/admin'
 end
 
 post '/admin/create' do
@@ -124,7 +123,6 @@ post '/admin/create' do
   
   entry = @blog.entries.create(
     :title => params[:title],
-    :url => params[:url],
     :slug => slug,
     :text => params[:text],
     :is_live => params[:is_live]

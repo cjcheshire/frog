@@ -5,24 +5,18 @@
     %title 
       = @title ? "#{@title} | " : ''
       = @blog.title
-    %link{:href => "/style.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
-    %link{:href => "/tumblr.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
-    %script{:src => "/jquery-1.2.6.min.js", :type => "text/javascript"}
+    %link{:href => "/css/admin.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
   %body
-    .test
-      ADMIN Layout
-    %h1= link_to @blog.title, '/'
-    - if logged_in?
-      #nav
-        %a{:href => "/admin"} Admin
-        | #{link_to('New Entry', '/admin/new')} |
-        %a{:href => "/logout"} Logout
-    #content
-      = yield
-    #footer
-      powered by
-      %a{:href => "http://github.com/moomerman/frog/tree/master"} frog
-      and
-      %a{:href => "http://github.com/bmizerany/sinatra/tree/master"} sinatra
-      |
-      %a{:href => "http://hobix.com/textile/"} formatting
+    #wrapper
+      - if logged_in?
+        #nav
+          %a{:href => "/admin"} Admin
+          | #{link_to('New Entry', '/admin/new')} |
+          %a{:href => "/logout"} Logout
+      #container.container
+        #header.header
+          %h1= link_to @blog.title, '/'
+        #content.content
+          = yield
+        #footer.footer
+      

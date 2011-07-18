@@ -10,12 +10,11 @@
       = entry.created_at.strftime("%a")
     %div{:style => "font-size:0.4em"}
       = link_to(entry.created_at.strftime("%H:%M"), "/perm/#{entry.id}")
-  - unless entry.url.blank?
-    .link
-      = link_to entry.title, entry.url, :class => 'link'
-    %p{:style => "margin-top:-2px;"}
-      %small= entry.short_uri
-  - else
-    %h2= entry.title
+  %h2
+    - if @on_slug 
+      = entry.title
+    - else
+      %a{:href => "/blog/#{entry.slug}"}
+        = entry.title
   = entry.html
 - ##end

@@ -1,0 +1,292 @@
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, p, blockquote, img, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+form, fieldset, input, textarea, label, legend {
+	margin: 0; padding: 0;
+	font-weight: inherit; font-style: inherit; font-size: 100%;
+	font-family: "Helvetica Neue", Helvetica Neue, Helvetica, Arial, sans-serif; vertical-align: baseline;
+	background: transparent;
+	-webkit-text-size-adjust: none;
+}
+html, body {
+	line-height: 1;
+	background-color: #ededed;
+}
+body {
+	font-size: 10px;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-style: normal; font-weight: normal;
+}
+ul, ol {
+	list-style: none;
+}
+table {
+	border-collapse: collapse; border-spacing: 0;
+}
+caption, th {
+	text-align: left; font-weight: normal;
+}
+legend {
+	color: #000;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%; font-weight: normal;
+}
+q::before, q::after, blockquote::before, blockquote::after {
+	content: ''; content: none;
+}
+q, blockquote {
+	quotes: "" "";
+}
+abbr, acronym, fieldset, img, a img, :link img, :visited img {
+	border: 0;
+}
+abbr, acronym, ins, del {
+	text-decoration: none;
+}
+
+article, aside, figure, footer, header, hgroup, nav, section { 
+  display:block; 
+}
+
+
+font,
+basefont {
+	color: inherit; font: inherit; font-size: 100%;
+}
+center,
+*[align] {
+	text-align: inherit;
+}
+
+s, strike, u {
+	text-decoration: inherit;
+}
+img {
+	display: block;
+	margin: 0;
+	font-size: 12px;
+	border: none;
+}
+tr, th, td {
+	width: auto; height: auto;
+	vertical-align: inherit;
+	background-color: transparent;
+	border: none;
+}
+table[border],
+.content table[border] {
+	border-collapse: separate; border-spacing: 0;
+}
+nobr {
+	white-space: normal;
+}
+marquee {
+	overflow: visible;
+	-moz-binding: none;
+}
+blink {
+	text-decoration: none;
+}
+
+
+/**
+* @section tripoli
+* @subsection General
+* --------------------------------------------------------------------------------------------------
+*/
+a {
+	text-decoration: underline; color: #000;
+}
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+}
+strong, th, thead td, dt,
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+cite, em, dfn {
+	font-style: italic;
+}
+code, kbd, samp, pre, tt, var {
+	font-size: 100%;
+	font-family: mono-space, monospace;
+}
+canvas {
+	display: block;
+}
+pre {
+	white-space: pre;
+}
+pre * {
+	font-size: 100%;
+	white-space: pre;
+}
+del {
+	text-decoration: line-through;
+}
+ins, dfn {
+	border-bottom: 1px solid #000;
+}
+small,
+sup,
+sub {
+	font-size: 85%;
+}
+big {
+	font-size: 125%;
+	line-height: 80%;
+}
+abbr, acronym {
+	text-transform: uppercase;
+	font-size: 85%;
+	letter-spacing: 0.1em;
+}
+abbr[title],
+acronym[title],
+dfn[title] {
+	cursor: help;
+}
+sup {
+	vertical-align: super;
+}
+sub {
+	vertical-align: sub;
+}
+blockquote {
+	padding-left: 2.2em;
+}
+:lang(en-GB) {
+	quotes: '\2018' '\2019' '\201C' '\201D';
+}
+*[lang|='en'] q:before {
+	content: '\201C';
+}
+*[lang|='en'] q:after {
+	content: '\201D';
+}
+*[lang|='en'] q q:before {
+	content: '\2018';
+}
+*[lang|='en'] q q:after {
+	content: '\2019';
+}
+input,
+select,
+button {
+	cursor: pointer;
+}
+input[type='text'],
+input[type='password'] {
+	cursor: text;
+}
+input[type='hidden'] {
+	display: none;
+}
+frame, iframe {
+	border: 0;
+}
+
+
+/**
+* @section tripoli
+* @subsection Content
+* --------------------------------------------------------------------------------------------------
+*/
+.content {
+	font-size: 1em;
+}
+.content h1,
+.content h2,
+.content h3 {
+	font-weight: 100;
+}
+.content h1 {
+	margin: 0 0 5px;
+	font-size: 25px; line-height: 1.1;
+}
+.content h2,
+.content h3 {
+	margin: 0 0 10px;
+	font-size: 26px; line-height: 1.3;
+}
+.content h4,
+.content h5,
+.content h6 {
+	margin: 0 0 0.8em;
+	font-size: 13px; line-height: 1;
+}
+.content h4 {
+	font-weight: bold;
+}
+.content ul li {
+	padding-left: 1.4em;
+	list-style: disc outside;
+}
+.content ol {
+	margin-left: 1.4em;
+	list-style: decimal outside;
+}
+.content table {
+	border-collapse: collapse;
+}
+.content hr,
+.content p,
+.content ul,
+.content ol,
+.content dl,
+.content pre,
+.content address,
+.content table {
+	margin-bottom: 1.6em;
+}
+.content dt {
+	margin-bottom: 0.4em;
+}
+.content caption {
+	padding-bottom: 0.8em;
+}
+.content ul ul,
+.content ol ul,
+.content ul ol,
+.content ol ol {
+	margin-bottom: 0;
+}
+
+.content p {
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+
+/**
+* @section tripoli
+* @subsection Type Plugin
+* --------------------------------------------------------------------------------------------------
+*/
+.alt {
+	font-family: "Baskerville Italic", "Warnock Pro", "Goudy Old Style", "Palatino", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+	font-style: italic;
+	font-weight: normal;
+}
+.dquo {
+	margin-left: -0.55em;
+}
+
+
+/**
+* =hide
+* @subsection Accessible Hiding
+* --------------------------------------------------------------------------------------------------
+*/
+.access,
+legend, table caption,
+.more a strong, a.more strong, .more a span, a.more span,
+.geo {
+	position: absolute; left: -9999px;
+	overflow: hidden;
+	height: 0; width: 0;
+	font-size: 0; line-height: 0;
+}
