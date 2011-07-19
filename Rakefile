@@ -1,3 +1,12 @@
+require 'rubygems'
+require 'sinatra'
+require 'active_record'
+require 'uri'
+require 'haml'
+require 'will_paginate'
+require 'sinatra/content_for'
+require 'sinatra/ratpack'
+
 Dir["lib/*.rb"].each { |x| load x }
 
 task :default do

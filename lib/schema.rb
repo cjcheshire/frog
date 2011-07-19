@@ -1,5 +1,3 @@
-require 'active_record'
-
 class Schema < ActiveRecord::Migration
 
   def self.up

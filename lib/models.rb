@@ -1,4 +1,3 @@
-
 db = URI.parse(ENV['DATABASE_URL'] || 'sqlite3://localhost/lib/frog.db')
 
 ActiveRecord::Base.establish_connection(
