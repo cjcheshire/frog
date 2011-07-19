@@ -1,7 +1,3 @@
-require 'active_record'
-require 'uri'
-#require 'redcloth'
-#require 'syntaxi'
 
 db = URI.parse(ENV['DATABASE_URL'] || 'sqlite3://localhost/lib/frog.db')
 

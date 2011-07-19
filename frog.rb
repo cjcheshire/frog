@@ -2,9 +2,10 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'active_record'
+require 'uri'
 require 'haml'
 require 'will_paginate'
-require 'will_paginate/finders/active_record'
 require 'sinatra/content_for'
 require 'sinatra/ratpack'
 
