@@ -11,7 +11,7 @@
   %label 
     Body
   %textarea{:name => "text"}
-    = @entry.text
+    = h(@entry.text)
 .row.checkbox
   %label Published
   %input.checkbox{:checked => @entry.is_live, :name => "is_live", :type => "checkbox", :value => "true"}/

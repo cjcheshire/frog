@@ -1,5 +1,9 @@
 module Helpers
-  
+
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+      
   def logged_in?
     session[:user]
   end
