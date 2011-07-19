@@ -19,6 +19,8 @@ class Entry < ActiveRecord::Base
   #Syntaxi.line_number_method = 'floating'
   #Syntaxi.wrap_at_column = 80
   
+  # TODO : Add the sanitize gem (http://wonko.com/post/sanitize) to raw restrict html input
+  
   def html
     return if self.text.blank?
 
