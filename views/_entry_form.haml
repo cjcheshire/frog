@@ -2,10 +2,11 @@
   %label 
     Title
   %input.text_input{:name => "title", :type => "text", :value => @entry.title}/
-.row.input-text
-  %label 
-    Slug
-  %input.text_input{:name => "slug", :type => "text", :value => @entry.slug}/
+-if mode == "edit"
+  .row.input-text
+    %label 
+      Slug
+    %input.text_input{:name => "slug", :type => "text", :value => @entry.slug}/
 .row.textarea
   %label 
     Body

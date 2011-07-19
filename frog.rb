@@ -80,7 +80,7 @@ end
 # -- Admin actions (require login)
 
 get '/admin/?' do
-  @entries = @blog.entries.paginate :page => params[:page], :per_page => 2
+  @entries = @blog.entries.paginate :page => params[:page], :per_page => 20
   
   if request.xhr?
     haml :_admin_post_row, :layout => false

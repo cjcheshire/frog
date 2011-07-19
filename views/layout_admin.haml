@@ -10,9 +10,14 @@
     #wrapper
       - if logged_in?
         #nav
-          %a{:href => "/admin"} Admin
-          | #{link_to('New Entry', '/admin/new')} |
-          %a{:href => "/logout"} Logout
+          %li
+            %a{:href => "/admin"}
+              Post Listing
+          %li  
+            #{link_to('New Post', '/admin/new')} |
+          %li  
+            %a{:href => "/logout"}
+              Log Out
       #container.container
         #header.header
           %h1= link_to @blog.title, '/'

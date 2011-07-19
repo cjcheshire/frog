@@ -1,6 +1,7 @@
-%h2 New Entry
+%h1
+  New Entry
 %form{:action => "/admin/create", :method => "post"}
-  = partial :entry_form
+  = partial(:entry_form, :locals => {:mode => "new"})
   %p
     %input.txt-btn.live{:type => "submit", :value => "create"}/
     %input.txt-btn.not-live{:onclick => "location.href='/admin'", :type => "button", :value => "cancel"}/

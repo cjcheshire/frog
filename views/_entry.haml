@@ -1,5 +1,5 @@
 - prev_date ||= ''
-- ##if entry.is_live
+
 .post
   .date
     - if prev_date != entry.created_at.strftime("%a%d%Y")
@@ -17,4 +17,3 @@
       %a{:href => "/blog/#{entry.slug}"}
         = entry.title
   = entry.html
-- ##end

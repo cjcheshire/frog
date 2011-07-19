@@ -1,6 +1,7 @@
-%h2 Edit Entry
+%h1 
+  Edit Entry
 %form{:action => "/admin/update/#{@entry.id}", :method => "post"}
-  = partial :entry_form
+  = partial(:entry_form, :locals => {:mode => "edit"})
   %p
     %input.txt-btn.live{:type => "submit", :value => "update"}/
     %input.txt-btn.not-live{:onclick => "location.href='/admin'", :type => "button", :value => "cancel"}/
