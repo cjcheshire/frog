@@ -29,9 +29,9 @@ helpers do
 end
 
 # Main Blog action
-['/', '/blog?'].each do | path | 
+['/', '/blog/?'].each do | path | 
   get path do 
-    @entries = @blog.entries.where("is_live = ?", true).paginate :page => params[:page], :per_page => 3  
+    @entries = @blog.entries.is_live.paginate :page => params[:page], :per_page => 3  
     if request.xhr?
       haml :blog, :layout => false
     else
@@ -78,9 +78,15 @@ end
 
 # -- Admin actions (require login)
 
-get '/admin' do
-  @entries = @blog.entries
-  haml :admin, :layout => :layout_admin
+get '/admin/?' do
+  @entries = @blog.entries.paginate :page => params[:page], :per_page => 2
+  
+  if request.xhr?
+    haml :_admin_post_row, :layout => false
+  else
+    haml :admin, :layout => :layout_admin
+  end  
+  
 end
 
 get '/admin/new' do
@@ -100,8 +106,6 @@ post '/admin/update/:id' do
   if params[:slug].blank?
     slug = sluggify(params[:title])
   end
-  
-  # TODO => helper: query for exisiting slug, append url OR add id before slug??
   
   entry.update_attributes(:title => params[:title], :slug => slug, :text => params[:text], :is_live => params[:is_live])
   

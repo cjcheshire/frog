@@ -1,12 +1,12 @@
-%h2 Admin
 
-%p= link_to('New Entry', '/admin/new')
-- @entries.each do |entry|
-  %p
-    %a{:href => "/perm/#{entry.id}"}= entry.title
-    %small
-      (#{time_ago_or_time_stamp(entry.created_at)} [live = #{entry.is_live}])
-    = link_to 'Edit', "/admin/update/#{entry.id}"
-    |
-    \#{link_to 'Preview Slug', "/blog/#{entry.slug}"} |
-    \#{link_to 'Delete', "/admin/destroy/#{entry.id}", :onclick => "return confirm('Are you sure?');"}
+%a.txt-btn.add-entry{:href => "/admin/new"}
+  Add new entry
+
+.entries
+  = partial(:admin_post_row, :locals => {:entry => @entries})    
+    
+- unless @entries.current_page >= @entries.total_pages
+  - next_page_link "Show more posts"
+
+-content_for :footer_scripts do
+  = javascript_include_tag 'load-more.js'

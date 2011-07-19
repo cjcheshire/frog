@@ -14,6 +14,8 @@ end
 class Entry < ActiveRecord::Base
   belongs_to :blog
   
+  scope :is_live, where(:is_live => true)
+  
   #Syntaxi.line_number_method = 'floating'
   #Syntaxi.wrap_at_column = 80
   

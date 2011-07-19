@@ -2,5 +2,5 @@
 %form{:action => "/admin/update/#{@entry.id}", :method => "post"}
   = partial :entry_form
   %p
-    %input{:type => "submit", :value => "update"}/
-    %input{:onclick => "location.href='/admin'", :type => "button", :value => "cancel"}/
+    %input.txt-btn.live{:type => "submit", :value => "update"}/
+    %input.txt-btn.not-live{:onclick => "location.href='/admin'", :type => "button", :value => "cancel"}/

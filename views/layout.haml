@@ -7,7 +7,7 @@
       = @blog.title
     %link{:href => "/style.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
     %link{:href => "/tumblr.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
-  %body
+  %body(class="#{yield_content :body_class}" id="#{yield_content :body_id}")
     %h1= link_to @blog.title, '/'
     - if logged_in?
       #nav

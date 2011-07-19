@@ -1,0 +1,23 @@
+.entries
+  - @entries.each do |entry|
+    -if entry.is_live?
+      - css_live = "live"
+    -else
+      - css_live = "not-live"
+
+    .row.round10{:class => css_live}
+
+      %a{:href => "/blog/#{entry.slug}"}
+        = entry.title
+      %small
+        (#{time_ago_or_time_stamp(entry.created_at)})
+      %ul.tools
+        %li.edit
+          %a{:href => "/admin/update/#{entry.id}", :title => "Edit"}
+            Edit
+        %li.preview
+          %a{:href => "/blog/#{entry.slug}", :title => "Preview"}
+            Preview
+        %li.delete
+          %a{:href => "/admin/destroy/#{entry.id}", :title => "Delete", :onclick => "return confirm('Are you sure?');"}
+            Delete
