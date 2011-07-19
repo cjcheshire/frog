@@ -54,6 +54,7 @@
 
 .content h1 {
 	font-size: 50px;
+	margin: 0 0 15px 0;
 }
 .content h2 {
 	font-size: 35px;
@@ -85,7 +86,8 @@ body, html {
 	}
 	
 	#wrapper {
-
+	  position: relative; z-index: 1;
+		height: 100%;
 	}
 	
 	#header {
@@ -93,7 +95,6 @@ body, html {
 	}
 				
 .container {
-  position: relative; z-index: 1;
   width: 956px; min-width: 956px;
   text-align: left;
   margin: 0 auto; 
@@ -193,7 +194,17 @@ body, html {
 .entries .row .tools li.delete a {
 	background-position: -60px 4px;
 }
-        
+     
+.login-box {
+	position: absolute; top: 50%; left: 50%;
+	width: 400px; height: 270px;
+	margin: -135px 0 0 -200px; padding: 20px 20px 0 20px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.7); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.7); 
+}
+.login-box .row input {
+	width: 75%;
+}
+   
 form label {
   display: block;
 }

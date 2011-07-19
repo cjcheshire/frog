@@ -59,7 +59,7 @@ get '/blog/:slug' do
 end
 
 get '/login' do
-  haml :login
+  haml :login, :layout => :layout_admin
 end
 
 post '/login' do
