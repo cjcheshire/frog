@@ -3,7 +3,7 @@
       
     - css_live = entry.is_live? ? "live" : "not-live"
 
-    .row.round10{:class => css_live}
+    .row{:class => css_live}
 
       %a{:href => "/blog/#{entry.slug}"}
         = entry.title

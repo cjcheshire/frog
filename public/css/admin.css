@@ -1,20 +1,5 @@
 @import url("/css/reset.css");
 
-.clearfix:after {
-	clear: both;
-	display: block; visibility: hidden;
-	height: 0; width: 0;
-	font-size: 0; line-height: 0;
-	content: '.';
-}
-.clearfix {
-	display: inline-block;
-}
-/* Hide from IE Mac \*/
-.clearfix {
-	display: block;
-}
-
 #logo a, .entries .row .tools li a
 {
     text-indent:-9999px; line-height: 0.001em; font-size: 0.001em;
@@ -166,12 +151,29 @@ body, html {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d25465', endColorstr='#cb2d2d',GradientType=0 );
 	background: linear-gradient(top, rgba(210,84,101,1) 0%,rgba(186,44,42,1) 40%,rgba(170,8,0,1) 41%,rgba(203,45,45,1) 100%);
 }
+.more {
+	background: rgb(226,226,226);
+	background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(226,226,226,1)), color-stop(50%,rgba(219,219,219,1)), color-stop(51%,rgba(209,209,209,1)), color-stop(100%,rgba(254,254,254,1)));
+	background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%);
+	background: -o-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%);
+	background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 );
+	background: linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%);
+}
+
+/*
+	
+	Listing
+
+*/
 
 .entries .row {
 	position: relative;
 	margin: 0 0 8px 0; padding: 15px 20px;
 	font-size: 16px;
 	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.7); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.7); 
+	-moz-border-radius: 10px; border-radius: 10px;	
 }
 .entries .row, .entries .row a {
 	color: #fff;
@@ -206,6 +208,23 @@ body, html {
 .entries .row .tools li.delete a {
 	background-position: -60px 4px;
 }
+
+.show-more {
+	display: block;
+	height: 50px; line-height: 50px;
+	color: rgba(0,94,170,1); text-align: center; text-decoration: none; text-shadow: rgba(255,255,255,0.45) 0 2px 2px;
+	margin: 0 auto;
+}
+.show-more img {
+	display: block;
+	margin: 0 auto; padding: 15px 0 0 0;
+}
+
+/*
+	
+	Forms
+
+*/
         
 form label {
   display: block;

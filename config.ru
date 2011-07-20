@@ -1,2 +1,2 @@
-require 'frog'
+require 'main'
 run Sinatra::Application

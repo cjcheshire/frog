@@ -9,7 +9,7 @@
   = partial(:entry, :locals => {:entry => entry})
   
 - unless @entries.current_page >= @entries.total_pages
-  - next_page_link "Show more posts"
+  - next_page_link("Show more posts")
 
 -content_for :footer_scripts do
   = javascript_include_tag 'load-more.js'
