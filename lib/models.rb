@@ -1,4 +1,4 @@
-db = URI.parse(ENV['DATABASE_URL'] || 'sqlite3://localhost/lib/main.db')
+db = URI.parse(ENV['DATABASE_URL'] || 'sqlite3://localhost/lib/frog.db')
 
 ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,

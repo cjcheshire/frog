@@ -6,11 +6,11 @@ require 'uri'
 Dir["lib/*.rb"].each { |x| load x }
 
 task :default do
-  puts 'rake main:init           to get started'
-  puts 'rake main:reset          to reload the db schema (loses all data!)'
+  puts 'rake frog:init           to get started'
+  puts 'rake frog:reset          to reload the db schema (loses all data!)'
 end
 
-namespace :main do
+namespace :frog do
   
   task :db_up do
     Schema.up
