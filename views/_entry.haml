@@ -1,9 +1,13 @@
+- if @on_slug
+  .h1
+    = link_to('Blog', '/blog')
+
 .post
   - if @on_slug
-    %h1
+    %h1.main
       = entry.title
   - else
-    %h2
+    %h2.main
       %a{:href => "/blog/#{entry.slug}"}
         = entry.title
   .date

@@ -44,7 +44,7 @@ end
 # Permalink Entry action
 get '/perm/:id' do
   @entry = @blog.entries.find(params[:id])
-  haml :entry
+  haml :blog_post
 end
 
 # Permalink Slug Entry action
@@ -54,7 +54,7 @@ get '/blog/:slug' do
   if @entry == nil || !@entry.is_live && !logged_in?
     redirect '/'
   else
-    haml :entry
+    haml :blog_post
   end
 end
 
@@ -92,12 +92,12 @@ end
 
 get '/admin/new' do
   @entry = Entry.new
-  haml :new, :layout => :layout_admin
+  haml :blog_new_post, :layout => :layout_admin
 end
 
 get '/admin/update/:id' do
   @entry = @blog.entries.find(params[:id])
-  haml :update, :layout => :layout_admin
+  haml :blog_update_post, :layout => :layout_admin
 end
 
 post '/admin/update/:id' do

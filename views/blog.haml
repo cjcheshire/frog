@@ -1,8 +1,10 @@
 -content_for :body_class do
   = "blog"
 
-%h1.h1
-  = link_to('Blog', '/blog')
+- if !request.xhr?
+  %h1.h1
+    = link_to('Blog', '/blog')
+
 - @entries.each do |entry|
   = partial(:entry, :locals => {:entry => entry})
   
