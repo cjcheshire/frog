@@ -1,2 +1,8 @@
+-content_for :body_class do
+  = "blog"
+
+.h1
+  = link_to('Blog', '/blog')
+
 - @title = @entry.title
 = partial(:entry, :locals => {:entry => @entry})

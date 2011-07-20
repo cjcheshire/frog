@@ -1,19 +1,12 @@
-- prev_date ||= ''
-
 .post
-  .date
-    - if prev_date != entry.created_at.strftime("%a%d%Y")
-      .date_brick
-        = entry.created_at.strftime("%b")
-        %br/
-        = entry.created_at.strftime("%d")
-      = entry.created_at.strftime("%a")
-    %div{:style => "font-size:0.4em"}
-      = link_to(entry.created_at.strftime("%H:%M"), "/perm/#{entry.id}")
-  %h2
-    - if @on_slug 
+  - if @on_slug
+    %h1
       = entry.title
-    - else
+  - else
+    %h2
       %a{:href => "/blog/#{entry.slug}"}
         = entry.title
-  = entry.html
+  .date
+    = entry.created_at.strftime("%A, %d %B, %Y")
+  .post-details
+    = entry.html

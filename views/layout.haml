@@ -5,18 +5,17 @@
     %title 
       = @title ? "#{@title} | " : ''
       = @blog.title
-    %link{:href => "/style.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
-    %link{:href => "/tumblr.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
+    %link{:href => "/css/main.css", :media => "screen", :rel => "Stylesheet", :type => "text/css"}
   %body(class="#{yield_content :body_class}" id="#{yield_content :body_id}")
-    %h1= link_to @blog.title, '/'
-    - if logged_in?
-      #nav
-        %a{:href => "/admin"} Admin
-        | #{link_to('New Entry', '/admin/new')} |
-        %a{:href => "/logout"} Logout
-    #content
-      = yield
-    #footer
+    #wrapper
+      #container.container
+        #header.header
+          =  #@blog.title
+        #content.content
+          #main-col  
+            =yield
+      #footer.footer
+        .container
 
   :plain
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 

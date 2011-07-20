@@ -1,9 +1,7 @@
 .entries
   - @entries.each do |entry|
-    -if entry.is_live?
-      - css_live = "live"
-    -else
-      - css_live = "not-live"
+      
+    - css_live = entry.is_live? ? "live" : "not-live"
 
     .row.round10{:class => css_live}
 

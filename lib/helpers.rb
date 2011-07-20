@@ -85,7 +85,7 @@ module Helpers
       end
     end
 
-    title = title.gsub(/[^a-zA-Z0-9 ]/,"")
+    title = title.gsub(/[^a-zA-Z0-9\- ]/,"")
     title = title.gsub(/[ ]+/," ")    
     title = title.gsub(/ /,"-")
     title = title.downcase

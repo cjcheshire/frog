@@ -104,8 +104,10 @@ post '/admin/update/:id' do
   entry = @blog.entries.find(params[:id])
   slug = params[:slug]
   
-  if params[:slug].blank?
+  if slug.blank?
     slug = sluggify(params[:title])
+  elsif
+    slug = sluggify(slug)
   end
   
   entry.update_attributes(:title => params[:title], :slug => slug, :text => params[:text], :is_live => params[:is_live])
@@ -122,7 +124,7 @@ post '/admin/create' do
   
   slug = params[:slug]
   
-  if params[:slug].blank?
+  if slug.blank?
     slug = sluggify(params[:title])
   end
   

@@ -1,7 +1,10 @@
-- prev_date = ''
+-content_for :body_class do
+  = "blog"
+
+%h1.h1
+  = link_to('Blog', '/blog')
 - @entries.each do |entry|
-  = partial(:entry, :locals => {:entry => entry, :prev_date => prev_date})
-  - prev_date = entry.created_at.strftime("%a%d%Y")
+  = partial(:entry, :locals => {:entry => entry})
   
 - unless @entries.current_page >= @entries.total_pages
   - next_page_link "Show more posts"
