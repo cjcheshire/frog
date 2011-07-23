@@ -33,18 +33,18 @@ module Helpers
     tag += ">#{text}</a>"
   end
   
-  def scrape_page_title(url)
-    page_title = /<title>\s*(.*)\s*<\/title>/i
-    begin
-      page_content = Timeout.timeout(5) {
-        fetch(url).body.to_s
-      }
-      matches = page_content.match(page_title)
-      matches[1] if matches || nil
-    rescue Exception => e
-      url
-    end
-  end
+#  def scrape_page_title(url)
+#    page_title = /<title>\s*(.*)\s*<\/title>/i
+#    begin
+#      page_content = Timeout.timeout(5) {
+#        fetch(url).body.to_s
+#      }
+#      matches = page_content.match(page_title)
+#      matches[1] if matches || nil
+#    rescue Exception => e
+#      url
+#    end
+#  end
 
   def fetch(uri_str, limit = 3)
     return false if limit == 0

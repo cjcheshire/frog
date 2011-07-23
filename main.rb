@@ -9,6 +9,9 @@ require 'will_paginate'
 require 'sinatra/content_for'
 require 'sinatra/ratpack'
 
+require 'aws/s3'
+
+
 
 Dir["lib/*.rb"].each { |x| load x }
 
@@ -24,6 +27,14 @@ before do
   end
   @blog = Blog.find(:first)
 end
+
+AWS::S3::Base.establish_connection!(
+  :access_key_id     => 'AKIAIKUOI7P6PBPKMUYA',
+  :secret_access_key => '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'
+)
+
+S3_BASE_URL = 'http://s3.amazonaws.com/wfp-portfolio/'
+
 
 helpers do
   include Helpers
